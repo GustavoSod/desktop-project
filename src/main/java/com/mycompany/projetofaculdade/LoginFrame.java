@@ -1,11 +1,29 @@
 package com.mycompany.projetofaculdade;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import model.UserModel;
+import java.sql.PreparedStatement;
 
 public class LoginFrame extends javax.swing.JFrame {
+    
+    private final String url = "jdbc:mysql://localhost:3306/db_projeto";
+    private final String usuarioBD = "root";
+    private final String senhaBD = "12345678";
+    
+    private Connection conexao = null;
 
     public LoginFrame() {
         initComponents();
+        
+        try {
+            conexao = DriverManager.getConnection(url, usuarioBD, senhaBD);
+        } catch (SQLException e) {
+            System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -152,14 +170,28 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        UserModel userModel = new UserModel();
-        userModel.setNome(jTextField1.getText());
-        userModel.setEmail(jTextField2.getText());
-        userModel.setSenha(jTextField3.getText());
 
-        OcorrenciasFrame ocorrenciasFrame = new OcorrenciasFrame();
-        ocorrenciasFrame.setVisible(true);
-        this.dispose();
+        String sql = "SELECT * FROM users_table WHERE user_name = ? AND user_email = ? AND user_password = ?";
+        try {
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, jTextField1.getText()); // Nome de usuário
+            ps.setString(2, jTextField2.getText()); // Email
+            ps.setString(3, jTextField3.getText()); // Senha
+
+            System.out.println("SQL: " + ps.toString()); // Imprime a consulta SQL para verificar
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                System.out.println("Login bem-sucedido!"); // Adiciona instrução de depuração
+                // Se o login for bem-sucedido, passe para outra tela
+                OcorrenciasFrame ocorrenciasFrame = new OcorrenciasFrame();
+                ocorrenciasFrame.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Login inválido");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao executar consulta SQL: " + e.getMessage());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
