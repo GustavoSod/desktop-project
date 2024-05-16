@@ -119,27 +119,26 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jScrollPane1" min="-2" pref="494" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" pref="505" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -148,13 +147,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="273" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="244" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="65" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -168,7 +167,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Ocorr&#xea;ncias"/>
+                <Property name="text" type="java.lang.String" value="Ocorr&#xea;ncias Recebidas"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
@@ -188,7 +187,7 @@
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="13">
+                      <Table columnCount="5" rowCount="17">
                         <Column editable="true" title="Id" type="java.lang.String">
                           <Data value="1"/>
                           <Data value="2"/>
@@ -202,7 +201,11 @@
                           <Data value="10"/>
                           <Data value="11"/>
                           <Data value="12"/>
-                          <Data value="null"/>
+                          <Data value="13"/>
+                          <Data value="14"/>
+                          <Data value="15"/>
+                          <Data value="16"/>
+                          <Data value="17"/>
                         </Column>
                         <Column editable="true" title="Local" type="java.lang.String">
                           <Data value="Rua tal"/>
@@ -217,7 +220,11 @@
                           <Data value="Av tal 110"/>
                           <Data value="Av tal 20"/>
                           <Data value="Av tal 1500"/>
-                          <Data value="null"/>
+                          <Data value="Av tal 1500"/>
+                          <Data value="Av tal 1500"/>
+                          <Data value="Av tal 1500"/>
+                          <Data value="Av tal 1500"/>
+                          <Data value="Av tal 1500"/>
                         </Column>
                         <Column editable="true" title="Tipo de ve&#xed;culo" type="java.lang.String">
                           <Data value="Carro"/>
@@ -232,7 +239,11 @@
                           <Data value="Carro"/>
                           <Data value="Carro"/>
                           <Data value="Carro"/>
-                          <Data value="null"/>
+                          <Data value="Moto"/>
+                          <Data value="Moto"/>
+                          <Data value="Caminh&#xe3;o"/>
+                          <Data value="Moto"/>
+                          <Data value="Moto"/>
                         </Column>
                         <Column editable="true" title="Gravidade" type="java.lang.String">
                           <Data value="Grave"/>
@@ -247,7 +258,11 @@
                           <Data value="Leve"/>
                           <Data value="Grave"/>
                           <Data value="Leve"/>
-                          <Data value="null"/>
+                          <Data value="Leve"/>
+                          <Data value="Grave"/>
+                          <Data value="Grave"/>
+                          <Data value="Leve"/>
+                          <Data value="Grave"/>
                         </Column>
                         <Column editable="true" title="Hor&#xe1;rio" type="java.lang.String">
                           <Data value="15:30"/>
@@ -262,7 +277,11 @@
                           <Data value="00:43"/>
                           <Data value="1:32"/>
                           <Data value="1:32"/>
-                          <Data value="null"/>
+                          <Data value="00:43"/>
+                          <Data value="00:43"/>
+                          <Data value="00:43"/>
+                          <Data value="00:43"/>
+                          <Data value="00:43"/>
                         </Column>
                       </Table>
                     </Property>
@@ -278,7 +297,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="N&#xfa;mero central de socorro para"/>
+                <Property name="text" type="java.lang.String" value="Suas ocorr&#xea;ncias adicionadas ser&#xe3;o"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
@@ -290,7 +309,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="relatar ocorr&#xea;ncia: 195"/>
+                <Property name="text" type="java.lang.String" value="enviadas pro resgate mais pr&#xf3;ximo"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
