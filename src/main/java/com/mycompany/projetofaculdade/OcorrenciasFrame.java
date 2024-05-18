@@ -1,9 +1,27 @@
 package com.mycompany.projetofaculdade;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 public class OcorrenciasFrame extends javax.swing.JFrame {
+
+    private final String url = "jdbc:mysql://localhost:3306/db_projeto";
+    private final String usuarioBD = "root";
+    private final String senhaBD = "12345678";
+    
+    private Connection conexao = null;
 
     public OcorrenciasFrame() {
         initComponents();
+        
+        try {
+            conexao = DriverManager.getConnection(url, usuarioBD, senhaBD);
+            System.out.println("conectou ao banco de dados: ");
+        } catch (SQLException e) {
+            System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -152,6 +170,11 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
         jLabel7.setToolTipText("");
 
         jButton1.setText("Adicionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -224,6 +247,36 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String local = jTextField1.getText();
+        String tipoVeiculo = jTextField3.getText();
+        String gravidade = jTextField2.getText();
+        String horario = jTextField4.getText();
+
+        if (local.isEmpty() || tipoVeiculo.isEmpty() || gravidade.isEmpty() || horario.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos.", "Campos Vazios", JOptionPane.WARNING_MESSAGE);
+        }else{
+        try {
+            String sql = "INSERT INTO occurrences (local, vehicle_type, severity, time) VALUES (?, ?, ?, ?)";
+
+            java.sql.PreparedStatement pstmt = conexao.prepareStatement(sql);
+            pstmt.setString(1, local);
+            pstmt.setString(2, tipoVeiculo);
+            pstmt.setString(3, gravidade);
+            pstmt.setString(4, horario);
+
+            pstmt.executeUpdate();
+            System.out.println("Dados inseridos com sucesso!");
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+         }catch (SQLException e) {
+            System.out.println("Erro ao inserir dados: " + e.getMessage());
+         }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
