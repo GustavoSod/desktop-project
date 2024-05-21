@@ -178,12 +178,17 @@ public class LoginFrame extends javax.swing.JFrame {
             ps.setString(2, jTextField2.getText()); // Email
             ps.setString(3, jTextField3.getText()); // Senha
 
-            System.out.println("SQL: " + ps.toString()); // Imprime a consulta SQL para verificar
+            System.out.println("SQL: " + ps.toString());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                System.out.println("Login bem-sucedido!"); // Adiciona instrução de depuração
-                // Se o login for bem-sucedido, passe para outra tela
-                OcorrenciasFrame ocorrenciasFrame = new OcorrenciasFrame();
+                System.out.println("Login bem-sucedido!");
+                
+                UserModel user = new UserModel();
+                user.setNome(jTextField1.getText());
+                user.setEmail(jTextField2.getText());
+                user.setSenha(jTextField3.getText());
+                
+                OcorrenciasFrame ocorrenciasFrame = new OcorrenciasFrame(user);
                 ocorrenciasFrame.setVisible(true);
                 this.dispose();
             } else {
