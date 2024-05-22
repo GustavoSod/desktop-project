@@ -53,10 +53,10 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" pref="176" max="32767" attributes="0"/>
+                                  <Component id="jLabel8" pref="175" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="51" max="32767" attributes="0"/>
+                                  <EmptySpace pref="50" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                       <Component id="jTextField4" min="-2" pref="184" max="-2" attributes="0"/>
@@ -133,12 +133,19 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane3" min="-2" pref="467" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane4" min="-2" pref="467" max="-2" attributes="0"/>
+                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jScrollPane3" min="-2" pref="467" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="277" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
+                                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace pref="69" max="32767" attributes="0"/>
@@ -148,14 +155,17 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" min="-2" pref="295" max="-2" attributes="0"/>
-                      <EmptySpace pref="202" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="158" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPane4" min="-2" pref="158" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -291,21 +301,142 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="33" type="rgb"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Helvetica Neue" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="ver ocorr&#xea;ncias enviadas"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Ocorr&#xea;ncias Enviadas"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="jTable4">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="33" red="33" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                    </Property>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="5" rowCount="17">
+                        <Column editable="true" title="Id" type="java.lang.String">
+                          <Data value="1"/>
+                          <Data value="2"/>
+                          <Data value="3"/>
+                          <Data value="4"/>
+                          <Data value="5"/>
+                          <Data value="6"/>
+                          <Data value="7"/>
+                          <Data value="8"/>
+                          <Data value="9"/>
+                          <Data value="10"/>
+                          <Data value="11"/>
+                          <Data value="12"/>
+                          <Data value="13"/>
+                          <Data value="14"/>
+                          <Data value="15"/>
+                          <Data value="16"/>
+                          <Data value="17"/>
+                        </Column>
+                        <Column editable="true" title="Local" type="java.lang.String">
+                          <Data value="Rua tal"/>
+                          <Data value="Rua tal 2"/>
+                          <Data value="Rua tal 3"/>
+                          <Data value="Av tal 100"/>
+                          <Data value="Av tal 111"/>
+                          <Data value="Av tal 540"/>
+                          <Data value="Av tal 103"/>
+                          <Data value="Av tal 1"/>
+                          <Data value="Av tal 090"/>
+                          <Data value="Av tal 110"/>
+                          <Data value="Av tal 20"/>
+                          <Data value="Av tal 1500"/>
+                          <Data value="Av tal 1500"/>
+                          <Data value="Av tal 1500"/>
+                          <Data value="Av tal 1500"/>
+                          <Data value="Av tal 1500"/>
+                          <Data value="Av tal 1500"/>
+                        </Column>
+                        <Column editable="true" title="Tipo de ve&#xed;culo" type="java.lang.String">
+                          <Data value="Carro"/>
+                          <Data value="Carro"/>
+                          <Data value="Moto"/>
+                          <Data value="Caminh&#xe3;o"/>
+                          <Data value="Moto"/>
+                          <Data value="Carro"/>
+                          <Data value="Carro"/>
+                          <Data value="Carro"/>
+                          <Data value="Carro"/>
+                          <Data value="Carro"/>
+                          <Data value="Carro"/>
+                          <Data value="Carro"/>
+                          <Data value="Moto"/>
+                          <Data value="Moto"/>
+                          <Data value="Caminh&#xe3;o"/>
+                          <Data value="Moto"/>
+                          <Data value="Moto"/>
+                        </Column>
+                        <Column editable="true" title="Gravidade" type="java.lang.String">
+                          <Data value="Grave"/>
+                          <Data value="Leve"/>
+                          <Data value="M&#xe9;dio"/>
+                          <Data value="M&#xe9;dio"/>
+                          <Data value="Leve"/>
+                          <Data value="Leve"/>
+                          <Data value="Leve"/>
+                          <Data value="Grave"/>
+                          <Data value="Grave"/>
+                          <Data value="Leve"/>
+                          <Data value="Grave"/>
+                          <Data value="Leve"/>
+                          <Data value="Leve"/>
+                          <Data value="Grave"/>
+                          <Data value="Grave"/>
+                          <Data value="Leve"/>
+                          <Data value="Grave"/>
+                        </Column>
+                        <Column editable="true" title="Hor&#xe1;rio" type="java.lang.String">
+                          <Data value="15:30"/>
+                          <Data value="22:12"/>
+                          <Data value="00:43"/>
+                          <Data value="9:45"/>
+                          <Data value="1:32"/>
+                          <Data value="9:45"/>
+                          <Data value="00:43"/>
+                          <Data value="22:12"/>
+                          <Data value="9:45"/>
+                          <Data value="00:43"/>
+                          <Data value="1:32"/>
+                          <Data value="1:32"/>
+                          <Data value="00:43"/>
+                          <Data value="00:43"/>
+                          <Data value="00:43"/>
+                          <Data value="00:43"/>
+                          <Data value="00:43"/>
+                        </Column>
+                      </Table>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="jButton2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

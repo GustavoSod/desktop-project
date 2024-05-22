@@ -2,9 +2,11 @@ package com.mycompany.projetofaculdade;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.UserModel;
 
 public class OcorrenciasFrame extends javax.swing.JFrame {
@@ -26,6 +28,66 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
             System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
         }
         jLabel8.setText("Bem vindo, " + user.getNome());
+        OccurrencesSent();
+        OccurrencesReceived();
+    }
+    
+    private void OccurrencesReceived() {
+        try {
+            Connection conexao = DriverManager.getConnection(url, usuarioBD, senhaBD);
+            String sql = "SELECT * FROM occurrences_received";
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            
+            DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+            model.setRowCount(0); // Limpa os dados existentes na tabela
+            
+            while (resultSet.next()) {
+                String id = resultSet.getString("ID");
+                String local = resultSet.getString("local");
+                String tipoVeiculo = resultSet.getString("vehicle");
+                String gravidade = resultSet.getString("severity");
+                String horario = resultSet.getString("time");
+                
+                model.addRow(new Object[]{id, local, tipoVeiculo, gravidade, horario});
+            }
+            
+            resultSet.close();
+            statement.close();
+            conexao.close();
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    private void OccurrencesSent() {
+        try {
+            Connection conexao = DriverManager.getConnection(url, usuarioBD, senhaBD);
+            String sql = "SELECT * FROM occurrences_sent";
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            
+            DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+            model.setRowCount(0); // Limpa os dados existentes na tabela
+            
+            while (resultSet.next()) {
+                String id = resultSet.getString("ID");
+                String local = resultSet.getString("local");
+                String tipoVeiculo = resultSet.getString("vehicle");
+                String gravidade = resultSet.getString("severity");
+                String horario = resultSet.getString("time");
+                
+                model.addRow(new Object[]{id, local, tipoVeiculo, gravidade, horario});
+            }
+            
+            resultSet.close();
+            statement.close();
+            conexao.close();
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -37,7 +99,10 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -99,13 +164,51 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTable3);
 
-        jButton3.setBackground(new java.awt.Color(51, 51, 51));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("ver ocorrências enviadas");
-        jButton3.setBorder(null);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jLabel9.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel9.setText("Ocorrências Enviadas");
+        jLabel9.setToolTipText("");
+
+        jTable4.setBackground(new java.awt.Color(51, 51, 51));
+        jTable4.setForeground(new java.awt.Color(204, 204, 204));
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"1", "Rua tal", "Carro", "Grave", "15:30"},
+                {"2", "Rua tal 2", "Carro", "Leve", "22:12"},
+                {"3", "Rua tal 3", "Moto", "Médio", "00:43"},
+                {"4", "Av tal 100", "Caminhão", "Médio", "9:45"},
+                {"5", "Av tal 111", "Moto", "Leve", "1:32"},
+                {"6", "Av tal 540", "Carro", "Leve", "9:45"},
+                {"7", "Av tal 103", "Carro", "Leve", "00:43"},
+                {"8", "Av tal 1", "Carro", "Grave", "22:12"},
+                {"9", "Av tal 090", "Carro", "Grave", "9:45"},
+                {"10", "Av tal 110", "Carro", "Leve", "00:43"},
+                {"11", "Av tal 20", "Carro", "Grave", "1:32"},
+                {"12", "Av tal 1500", "Carro", "Leve", "1:32"},
+                {"13", "Av tal 1500", "Moto", "Leve", "00:43"},
+                {"14", "Av tal 1500", "Moto", "Grave", "00:43"},
+                {"15", "Av tal 1500", "Caminhão", "Grave", "00:43"},
+                {"16", "Av tal 1500", "Moto", "Leve", "00:43"},
+                {"17", "Av tal 1500", "Moto", "Grave", "00:43"}
+            },
+            new String [] {
+                "Id", "Local", "Tipo de veículo", "Gravidade", "Horário"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jTable4);
+
+        jButton2.setText("Atualizar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -115,24 +218,33 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(130, 130, 130)
-                        .addComponent(jButton3)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(277, 277, 277))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addGap(192, 192, 192)
+                            .addComponent(jButton2))))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton3))
-                .addGap(56, 56, 56)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addGap(76, 76, 76)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jButton2)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -181,9 +293,9 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(59, 59, 59)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))
+                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(51, Short.MAX_VALUE)
+                                .addContainerGap(50, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,10 +391,10 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        OcorrenciasEnviadas ocorrenciasEnviadas = new OcorrenciasEnviadas();
-        ocorrenciasEnviadas.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        OccurrencesSent();
+        OccurrencesReceived();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
@@ -291,7 +403,7 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -299,10 +411,13 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
