@@ -102,7 +102,6 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -125,8 +124,10 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setText("Ocorrências Recebidas");
+        jLabel3.setText("Ocorrências Recebidas:");
         jLabel3.setToolTipText("");
+
+        jScrollPane3.setBackground(new java.awt.Color(51, 51, 51));
 
         jTable3.setBackground(new java.awt.Color(51, 51, 51));
         jTable3.setForeground(new java.awt.Color(204, 204, 204));
@@ -205,13 +206,6 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(jTable4);
 
-        jButton2.setText("Atualizar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -224,12 +218,9 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(277, 277, 277))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addGap(192, 192, 192)
-                            .addComponent(jButton2))))
-                .addContainerGap(69, Short.MAX_VALUE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(272, 272, 272))))
+                .addGap(69, 69, 69))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,9 +233,7 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jButton2)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -323,7 +312,7 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
@@ -379,6 +368,8 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
             pstmt.setString(4, horario);
 
             pstmt.executeUpdate();
+            OccurrencesSent();
+            OccurrencesReceived();
             System.out.println("Dados inseridos com sucesso!");
             JOptionPane.showMessageDialog(this, "Sua ocorrência foi adicionada com sucesso!", "Ocorrência Adicionada", JOptionPane.INFORMATION_MESSAGE);
             jTextField1.setText("");
@@ -391,11 +382,6 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        OccurrencesSent();
-        OccurrencesReceived();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
         });
@@ -403,7 +389,6 @@ public class OcorrenciasFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
